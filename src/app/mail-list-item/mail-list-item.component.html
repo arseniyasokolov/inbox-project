@@ -1,0 +1,15 @@
+<div class="mail-list-item">
+    <ng-container *ngIf="!model.IsDeleting">
+        <div class="mail-list-item__delete-btn" (click)="deleteItem()">X</div>
+        <div class="mail-list-item__title">
+            {{ model.Title }}
+        </div>
+        <div>{{ model.Message }}</div>
+        <div class="mail-list-item__time">
+            {{ model.Time }}
+        </div>
+    </ng-container>
+    <div *ngIf="model.IsDeleting">
+        Удаляется...
+    </div>
+</div>

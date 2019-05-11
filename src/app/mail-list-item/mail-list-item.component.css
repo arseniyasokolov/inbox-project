@@ -1,0 +1,23 @@
+.mail-list-item {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0 1rem 0;
+    padding: 1rem 0 1rem 0;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+}
+
+.mail-list-item__title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.mail-list-item__delete-btn {
+    align-self: flex-end;
+    color: violet;
+}
+
+.mail-list-item__time {
+    margin-top: 5px;
+    color: violet;
+}

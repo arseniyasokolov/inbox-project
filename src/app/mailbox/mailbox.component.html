@@ -1,0 +1,12 @@
+<div class="layout">
+    <ng-container *ngIf="Items">
+        <div *ngIf="Items.length">
+            <mail-list-item *ngFor="let item of Items" [model]="item" (onDelete)="deleteItem(item.Id)">
+            </mail-list-item>
+        </div>
+        <div *ngIf="!Items.length">
+            Писем пока нет!
+        </div>
+    </ng-container>
+    <loader [loading]="!Items"></loader>
+</div>
