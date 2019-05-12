@@ -4,7 +4,7 @@
     "codelyzer"
   ],
   "rules": {
-    "array-type": false,
+    "array-type": true,
     "arrow-parens": false,
     "deprecation": {
       "severity": "warn"
@@ -33,7 +33,7 @@
     ],
     "no-consecutive-blank-lines": false,
     "no-console": [
-      true,
+      false,
       "debug",
       "info",
       "time",
@@ -57,7 +57,7 @@
     "object-literal-sort-keys": false,
     "ordered-imports": false,
     "quotemark": [
-      true,
+      false,
       "single"
     ],
     "trailing-comma": false,
@@ -70,6 +70,22 @@
     "use-life-cycle-interface": true,
     "use-pipe-transform-interface": true,
     "component-class-suffix": true,
-    "directive-class-suffix": true
+    "directive-class-suffix": true,
+    "directive-selector": [
+      true,
+      "attribute",
+      "camelCase"
+    ],
+    "component-selector": [
+      true,
+      "element",
+      "kebab-case"
+    ],
+    "variable-name": {
+      "options": [
+        "ban-keywords",
+        "allow-pascal-case"
+      ],
+    },
   }
 }

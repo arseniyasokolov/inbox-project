@@ -1,7 +1,7 @@
 import { Observable, timer, of, interval, BehaviorSubject } from 'rxjs';
 import { switchMap, mapTo, repeat, map, first, filter } from 'rxjs/operators';
-import { Helpers } from 'core-library/helpers';
-import { Color } from 'core-library/color.model';
+import { Helpers } from 'core-library/common/helpers';
+import { Color } from 'core-library/common/color.model';
 
 /** Имитация API */
 export class MockAndSlowApi {

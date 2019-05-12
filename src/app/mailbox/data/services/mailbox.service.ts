@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable, interval } from 'rxjs';
 import { switchMap, first } from 'rxjs/operators';
 
-import { MockAndSlowApi } from './mock-and-slow-api';
-import { MailItemModel } from './mail-item.model';
+import { MockAndSlowApi } from '../../../data/mock-and-slow-api';
+import { MailItemModel } from '../models/mail-item.model';
 
 @Injectable()
 export class MailboxService {

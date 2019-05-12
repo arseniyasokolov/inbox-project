@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { MailItemViewModel } from '../data/mail-item.view-model';
-import { MailboxService } from '../data/mailbox.service';
-import { MailItemModel } from '../data/mail-item.model';
+import { MailItemViewModel } from '../../view-models/mail-item.view-model';
+import { MailboxService } from '../../data/services/mailbox.service';
+import { MailItemModel } from '../../data/models/mail-item.model';
 
 @Component({
-  selector: 'mailbox',
-  templateUrl: './mailbox.component.html',
-  styleUrls: ['./mailbox.component.css']
+  selector: 'mail-list',
+  templateUrl: './mail-list.component.html',
+  styleUrls: ['./mail-list.component.scss']
 })
 
-export class MailboxComponent implements OnInit {
+export class MailListComponent implements OnInit {
 
   public get Items(): MailItemViewModel[] {
     if (this._items)

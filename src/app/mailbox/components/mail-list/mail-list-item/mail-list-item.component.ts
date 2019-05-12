@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnDestroy, OnInit, isDevMode } from '@angular/core';
-import { MailItemViewModel } from '../data/mail-item.view-model';
+import { MailItemViewModel } from '../../../view-models/mail-item.view-model';
 import { TosterGlobalService } from 'core-library/toster/data/toster.global.service';
 import { TosterTypes } from 'core-library/toster/data/toster-types.enum';
 import { ITosterInitializeData } from 'core-library/toster/data/toster-initialize-data';
@@ -7,7 +7,7 @@ import { ITosterInitializeData } from 'core-library/toster/data/toster-initializ
 @Component({
   selector: 'mail-list-item',
   templateUrl: './mail-list-item.component.html',
-  styleUrls: ['./mail-list-item.component.css']
+  styleUrls: ['./mail-list-item.component.scss']
 })
 
 export class MailListItemComponent implements OnInit, OnDestroy {
