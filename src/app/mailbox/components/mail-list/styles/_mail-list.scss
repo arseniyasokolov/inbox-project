@@ -1,5 +1,21 @@
 .mail-list {
-    width: 70%;
-    height: 100%;
-    overflow: hidden;
+    width: 100%;
+    height: auto;
+    padding: 2rem 3rem 2rem 0;
+
+    &__item {  
+        ::ng-deep>div {
+            margin: 1.5rem 0;
+        }
+
+        ::ng-deep>div:first-child {
+            margin-top: 0;
+        }
+    }
+
+    &__placeholder {
+        font-family: $base-font;
+        font-size: 1.5rem;
+        color: $base-color;
+    }
 }

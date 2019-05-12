@@ -38,7 +38,7 @@ export class MailListComponent implements OnInit {
   private initialize() {
     this._dataService.getItems().subscribe(items => {
       this._items = this.createItems(items);
-      this.subscribeNewItems();
+      // this.subscribeNewItems();
     });
   }
 

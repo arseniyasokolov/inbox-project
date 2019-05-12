@@ -1,12 +1,12 @@
-<div class="mail-list">
-    <ng-container *ngIf="Items">
-        <div *ngIf="Items.length">
-            <mail-list-item *ngFor="let item of Items" [model]="item" (onDelete)="deleteItem(item.Id)">
-            </mail-list-item>
-        </div>
-        <div *ngIf="!Items.length">
-            Писем пока нет!
-        </div>
+<div *ngIf="Items" class="mail-list">
+    <ng-container *ngIf="Items.length">
+        <mail-list-item *ngFor="let item of Items"
+            class="mail-list__item" [model]="item"
+            (onDelete)="deleteItem(item.Id)">
+        </mail-list-item>
     </ng-container>
-    <pure-loader class="mail-list__loader" [loading]="!Items"></pure-loader>
+    <div class="mail-list__placeholder" *ngIf="!Items.length">
+        Писем пока нет!
+    </div>
 </div>
+<pure-loader [loading]="!Items" [bg]="true"></pure-loader>
