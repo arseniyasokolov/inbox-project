@@ -1,6 +1,8 @@
 @import '../../variables.scss';
 
 .loader {
+    background-color: $sub-bg-color;
+
     &__body {
         font-size: 2rem;
         font-weight: 600;

@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 // modules
 import { TosterModule } from 'core-library/toster/toster.module';
 import { LoaderModule } from 'core-library/loader/loader.module';
-import { MailboxModule } from './mailbox/mailbox.module';
+import { CabinetModule } from './cabinet/cabinet.module';
 
 // components
 import { AppComponent } from './app.component';
@@ -16,7 +16,7 @@ const coreModules = [
 ];
 
 const appModules = [
-  MailboxModule.forRoot()
+  CabinetModule.forRoot(),
 ]
 
 @NgModule({
