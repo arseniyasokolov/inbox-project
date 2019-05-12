@@ -1,8 +1,8 @@
 import { Component, Input, Output, EventEmitter, OnDestroy, OnInit, isDevMode } from '@angular/core';
-import { MailItemViewModel } from '../../../view-models/mail-item.view-model';
 import { TosterGlobalService } from 'core-library/toster/data/toster.global.service';
 import { TosterTypes } from 'core-library/toster/data/toster-types.enum';
 import { ITosterInitializeData } from 'core-library/toster/data/toster-initialize-data';
+import { MailItemViewModel } from '../../../view-models/mail-item.view-model';
 
 @Component({
   selector: 'mail-list-item',
@@ -39,10 +39,7 @@ export class MailListItemComponent implements OnInit, OnDestroy {
 
   private showDeleteMessage() {
     const lifeTime: number = Math.round((performance.now() - this._lifeTime) / 1000);
-    if (isDevMode())
-      console.log(lifeTime);
     const modalData: ITosterInitializeData = {
-      title: 'Письмо удалено',
       message: `Письмо пролежало в ящике ${lifeTime} сек!`,
       type: TosterTypes.Success
     };
