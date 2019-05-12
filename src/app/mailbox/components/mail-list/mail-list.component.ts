@@ -6,7 +6,7 @@ import { MailItemModel } from '../../data/models/mail-item.model';
 @Component({
   selector: 'mail-list',
   templateUrl: './mail-list.component.html',
-  styleUrls: ['./mail-list.component.scss']
+  styleUrls: ['./styles/mail-list.component.master.scss']
 })
 
 export class MailListComponent implements OnInit {

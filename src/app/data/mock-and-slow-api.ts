@@ -63,8 +63,8 @@ export class MockAndSlowApi {
         const randomColor: Color = new Color().getRandom();
         return {
             id: Helpers.getGuid(),
-            title: `Письмо о цвете ${randomColor.Color}`,
-            message: `Цвет ${randomColor.Color} обладает удивительными свойствами...` +
+            title: `Шлю тебе письмо о цвете ${randomColor.Color}`,
+            message: `Мой юный друг, цвет ${randomColor.Color} обладает удивительными свойствами...` +
                 ` А если его инвертировать, получится ${randomColor.Inverted}.`,
             timestamp: new Date(),
             senderId: Helpers.getGuid(),

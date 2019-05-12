@@ -7,7 +7,7 @@ import { MailItemViewModel } from '../../../view-models/mail-item.view-model';
 @Component({
   selector: 'mail-list-item',
   templateUrl: './mail-list-item.component.html',
-  styleUrls: ['./mail-list-item.component.scss']
+  styleUrls: ['./styles/mail-list-item.component.master.scss']
 })
 
 export class MailListItemComponent implements OnInit, OnDestroy {

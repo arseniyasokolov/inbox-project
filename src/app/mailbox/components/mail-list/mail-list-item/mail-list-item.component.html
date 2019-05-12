@@ -1,15 +1,23 @@
-<div class="mail-list-item">
+<div class="mail-list-item common-cover">
     <ng-container *ngIf="!model.IsDeleting">
-        <div class="mail-list-item__delete-btn" (click)="deleteItem()">X</div>
+        <div class="mail-list-item__delete-btn font-awesome"
+            (click)="deleteItem()">
+            <i class="far fa-trash-alt"></i>
+        </div>
         <div class="mail-list-item__title">
             {{ model.Title }}
         </div>
-        <div>{{ model.Message }}</div>
+        <div class="mail-list-item__message">
+            {{ model.Message }}</div>
         <div class="mail-list-item__time">
             {{ model.Time }}
         </div>
     </ng-container>
-    <div *ngIf="model.IsDeleting">
-        Удаляется...
+    <div *ngIf="model.IsDeleting"
+        class="mail-list-item__delete-cover">
+        <div
+            class="mail-list-item__delete-icon font-awesome">
+            <i class="fas fa-recycle"></i>
+        </div>
     </div>
 </div>

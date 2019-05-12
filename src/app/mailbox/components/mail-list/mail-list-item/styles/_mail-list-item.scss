@@ -1,0 +1,48 @@
+.mail-list-item {
+    display: flex;
+    flex-direction: column;
+    margin: 1.5rem 0;
+    padding: 1.5rem 1.5rem 1.5rem 3rem;
+    font-family: $base-font;
+    -webkit-font-smoothing: antialiased;
+    color: $base-color;
+    background-color: white;
+
+    &__title {
+        font-size: 2rem;
+        margin: 0.5rem 0 0.5rem 0;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    &__message {
+        font-size: 1.5rem;
+    }
+
+    &__delete-btn {
+        width: 1.5rem;
+        height: 1.5rem;
+        align-self: flex-end;
+        color: $accent-color;
+        cursor: pointer;
+    }
+
+    &__time {
+        margin-top: 1rem;
+    }
+
+    &__delete-cover {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__delete-icon {
+        width: 10%;
+        height: auto;
+        color: $accent-bg-color;
+    }
+}
