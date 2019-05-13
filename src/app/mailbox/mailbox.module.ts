@@ -1,5 +1,6 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { TosterModule } from 'core-library/toster/toster.module';
 import { LoaderModule } from 'core-library/loader/loader.module';
@@ -18,6 +19,7 @@ import { MailboxService } from './data/services/mailbox.service';
     ],
     imports: [
         BrowserModule,
+        HttpClientModule,
         LoaderModule,
         TosterModule
     ]
@@ -28,7 +30,7 @@ export class MailboxModule {
         return {
             ngModule: MailboxModule,
             providers: [
-                MailboxService
+                MailboxService,
             ]
         }
     }

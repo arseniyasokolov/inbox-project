@@ -2,13 +2,19 @@ import { Injectable } from '@angular/core';
 import { Observable, interval } from 'rxjs';
 import { switchMap, first } from 'rxjs/operators';
 
-import { MockAndSlowApi } from '../../../data/mock-and-slow-api';
+import { MockAndSlowApi } from '../../../data/mock-and-slow.api';
 import { MailItemModel } from '../models/mail-item.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class MailboxService {
 
-    private _externalServer = new MockAndSlowApi();
+    constructor(
+        private _httpClient: HttpClient,
+        private _externalServer: MockAndSlowApi
+    ) {
+
+    }
 
     public getItems(): Observable<MailItemModel[]> {
         return this._externalServer.getData().pipe(first());
