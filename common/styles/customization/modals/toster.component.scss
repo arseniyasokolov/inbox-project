@@ -1,0 +1,39 @@
+@import '../../variables.scss';
+
+.toster {
+    
+    width: 300px;
+    padding: 1.5rem;
+    margin: 1rem;
+    border-radius: 10px;
+    font-family: $base-font;
+    background-color: rgba(0, 0, 0, 0.3);
+
+    &__title {
+        font-weight: 600;
+    }
+
+}
+
+
+
+/* States */
+.toster {
+
+    &.type-info {
+        color: rgb(78, 78, 255);
+    }
+    
+    &.type-good {
+        color: rgb(60, 201, 60);
+    }
+    
+    &.type-warning {
+        color: rgb(241, 180, 47);
+    }
+    
+    &.type-error {
+        color: rgb(207, 46, 46);
+    }
+
+}

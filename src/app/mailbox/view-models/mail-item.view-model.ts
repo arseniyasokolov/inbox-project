@@ -33,9 +33,9 @@ export class MailItemViewModel {
         this.Message = data.message;
     }
 
-    /** Помечает письмо, как находящееся в процессе удаления */
-    public markOnDelete() {
-        this._isDeleting = true;
+    /** Помечает письмо, как находящееся в процессе удаления (или наоборот) */
+    public markOnDelete(state: boolean) {
+        this._isDeleting = state;
     }
 
 }

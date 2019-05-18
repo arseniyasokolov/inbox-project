@@ -33,7 +33,6 @@ export class MailListItemComponent implements OnInit, OnDestroy {
   }
 
   public deleteItem() {
-    this.model.markOnDelete();
     this.onDelete.emit();
   }
 

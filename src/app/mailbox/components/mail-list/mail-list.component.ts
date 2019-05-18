@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { pipe } from 'rxjs';
+import { first, finalize } from 'rxjs/operators';
+import { TosterGlobalService } from 'core-library/modals/data/toster/toster.global.service';
+import { TosterTypes } from 'core-library/modals/data/toster/toster-types.enum';
+
 import { MailItemViewModel } from '../../view-models/mail-item.view-model';
 import { MailboxService } from '../../data/services/mailbox.service';
 import { MailItemModel } from '../../data/models/mail-item.model';
@@ -19,7 +24,8 @@ export class MailListComponent implements OnInit {
   private _items: MailItemViewModel[];
 
   constructor(
-    private _dataService: MailboxService
+    private _dataService: MailboxService,
+    private _tosterService: TosterGlobalService
   ) {
   }
 
@@ -27,12 +33,19 @@ export class MailListComponent implements OnInit {
     this.initialize();
   }
 
-  public deleteItem(id: string) {
-    this._dataService.deleteItem(id).subscribe(() => {
-      const deletingIndex = this._items.findIndex(i => i.Id === id);
-      if (deletingIndex > -1)
-        this._items.splice(deletingIndex, 1);
-    });
+  public deleteItem(item: MailItemViewModel) {
+    item.markOnDelete(true);
+    this._dataService.deleteItem(item.Id)
+      .pipe(
+        first(),
+        finalize(() => item.markOnDelete(false))
+      ).subscribe(() => {
+        const deletingIndex = this._items.findIndex(i => i.Id === item.Id);
+        if (deletingIndex > -1)
+          this._items.splice(deletingIndex, 1);
+      }, () =>
+          this._tosterService.showModal({ type: TosterTypes.Error, message: 'Письмо не удалено', time: 50000 })
+      );
   }
 
   private initialize() {

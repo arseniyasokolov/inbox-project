@@ -2,7 +2,7 @@
     <ng-container *ngIf="Items.length">
         <mail-list-item *ngFor="let item of Items"
             class="mail-list__item" [model]="item"
-            (onDelete)="deleteItem(item.Id)">
+            (onDelete)="deleteItem(item)">
         </mail-list-item>
     </ng-container>
     <div class="mail-list__placeholder" *ngIf="!Items.length">

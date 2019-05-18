@@ -39,7 +39,7 @@ export class MockAndSlowApi {
             return Observable.throw('Не указан Id');
         return interval(1000).pipe(
             first(),
-            switchMap(() => this._httpClient.delete(`http://localhost:${Constants.port}/${Constants.inboxRest}` + id).pipe(
+            switchMap(() => this._httpClient.delete(`http://localhost:${Constants.port}/${Constants.inboxRest}/${id}`).pipe(
                 flatMap(() => of(null))
             ))
         )
