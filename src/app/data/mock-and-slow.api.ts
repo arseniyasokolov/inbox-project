@@ -17,9 +17,6 @@ export class MockAndSlowApi {
         this.createPipeWithRandomInterval(this.createDataItemsPair, 7000, 10000)
             .subscribe((dataItemsPair: any[]) => {
                 dataItemsPair.forEach(item => this._httpClient.post('http://localhost:4100/inbox', item).subscribe());
-                // const items = this._dataCache.getValue() ? [...this._dataCache.getValue3000()] : [];
-                // items.push(...dataItemsPair);
-                // this._dataCache.next(items);
             });
     }
 
@@ -30,15 +27,6 @@ export class MockAndSlowApi {
             const index = items.findIndex(i => i.id === lastId);
             return index > -1 ? items.slice(index + 1) : [];
         }));
-        // return this._dataCache.pipe(
-        //     filter(items => !!items),
-        //     map(items => {
-        //         if (!lastId)
-        //             return items;
-        //         const index = items.findIndex(i => i.id === lastId);
-        //         return index > -1 ? items.slice(index + 1) : [];
-        //     })
-        // );
     }
 
     public deleteDataItem(id: string): Observable<void> {
@@ -50,14 +38,6 @@ export class MockAndSlowApi {
                 flatMap(() => of(null))
             ))
         )
-        // return new Observable(subscriber => {
-        //         interval(1000).pipe(first()).subscribe(() => { // задержка для имитации работы сервера
-        //             this._httpClient.delete('http://localhost:4100/inbox/' + id).subscribe(() => {
-        //                 subscriber.next();
-        //                 subscriber.complete();
-        //             });
-        //         });
-        //     });
     }
 
     /** Создает поток, в котором повторяется результат переданного коллбэка с произвольной паузой
