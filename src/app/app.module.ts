@@ -8,7 +8,6 @@ import { CabinetModule } from './cabinet/cabinet.module';
 
 // components
 import { AppComponent } from './app.component';
-import { AuthorLogoComponent } from '../../core-library/core/components/author-logo/author-logo.component';
 
 const coreModules = [
   BrowserModule,

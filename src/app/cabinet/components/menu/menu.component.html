@@ -1,0 +1,12 @@
+<div class="menu">
+  <div class="menu__list">
+    <div *ngFor="let item of Items" class="menu__item">
+      <div class="menu__title">{{item.Title}}</div>
+      <div *ngIf="item.Counter" class="menu__counter">
+        {{item.Counter}}
+      </div>
+    </div>
+  </div>
+  <ng-content class="menu__list menu__list_external"
+    select="[menu-content]"></ng-content>
+</div>

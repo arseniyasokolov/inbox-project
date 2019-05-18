@@ -8,6 +8,7 @@ import { AuthorLogoComponent } from 'core-library/core/components/author-logo/au
 import { HeaderComponent } from './components/header/header.component';
 import { CabinetComponent } from './components/cabinet/cabinet.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { FooterComponent } from './components/footer/footer.component';
     CabinetComponent,
     HeaderComponent,
     FooterComponent,
+    MenuComponent,
   ],
   exports: [
     CabinetComponent
