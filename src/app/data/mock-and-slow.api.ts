@@ -5,6 +5,8 @@ import { switchMap, mapTo, repeat, map, first, flatMap } from 'rxjs/operators';
 import { Helpers } from 'core-library/common/helpers';
 import { Color } from 'core-library/common/color.model';
 
+const Constants = 
+
 @Injectable({
     providedIn: "root"
 })

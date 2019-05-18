@@ -2,7 +2,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
-import { TosterModule } from 'core-library/toster/toster.module';
+import { ModalsModule } from 'core-library/modals/modals.module';
 import { LoaderModule } from 'core-library/loader/loader.module';
 
 import { MailListComponent } from './components/mail-list/mail-list.component';
@@ -21,7 +21,7 @@ import { MailboxService } from './data/services/mailbox.service';
         BrowserModule,
         HttpClientModule,
         LoaderModule,
-        TosterModule
+        ModalsModule
     ]
 })
 export class MailboxModule {

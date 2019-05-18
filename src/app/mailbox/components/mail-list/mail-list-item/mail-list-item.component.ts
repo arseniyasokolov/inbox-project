@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnDestroy, OnInit, isDevMode } from '@angular/core';
-import { TosterGlobalService } from 'core-library/toster/data/toster.global.service';
-import { TosterTypes } from 'core-library/toster/data/toster-types.enum';
-import { ITosterInitializeData } from 'core-library/toster/data/toster-initialize-data';
+import { TosterGlobalService } from 'core-library/modals/data/toster/toster.global.service';
+import { TosterTypes } from 'core-library/modals/data/toster/toster-types.enum';
+import { ITosterInitializeData } from 'core-library/modals/data/toster/toster-initialize-data';
 import { MailItemViewModel } from '../../../view-models/mail-item.view-model';
 
 @Component({

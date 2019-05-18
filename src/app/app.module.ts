@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 // modules
-import { TosterModule } from 'core-library/toster/toster.module';
+import { ModalsModule } from 'core-library/modals/modals.module';
 import { LoaderModule } from 'core-library/loader/loader.module';
 import { CabinetModule } from './cabinet/cabinet.module';
 
@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 
 const coreModules = [
   BrowserModule,
-  TosterModule,
+  ModalsModule,
   LoaderModule,
 ];
 
