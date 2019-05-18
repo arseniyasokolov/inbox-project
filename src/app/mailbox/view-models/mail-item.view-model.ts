@@ -1,4 +1,4 @@
-import { Helpers } from 'core-library/common/helpers';
+import { Helpers } from 'core-library/core/helpers';
 import { MailItemModel } from '../data/models/mail-item.model';
 
 export class MailItemViewModel {

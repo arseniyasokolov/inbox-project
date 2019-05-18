@@ -2,10 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, timer, of, interval, BehaviorSubject, concat, pipe } from 'rxjs';
 import { switchMap, mapTo, repeat, map, first, flatMap } from 'rxjs/operators';
-import { Helpers } from 'core-library/common/helpers';
-import { Color } from 'core-library/common/color.model';
+import { Helpers } from 'core-library/core/helpers';
+import { Color } from 'core-library/core/models/color.model';
 
-const Constants = 
+const Constants = {
+    inboxRest: 'inbox',
+    port: '4100',
+};
 
 @Injectable({
     providedIn: "root"
@@ -18,12 +21,12 @@ export class MockAndSlowApi {
     constructor(private _httpClient: HttpClient) {
         this.createPipeWithRandomInterval(this.createDataItemsPair, 7000, 10000)
             .subscribe((dataItemsPair: any[]) => {
-                dataItemsPair.forEach(item => this._httpClient.post('http://localhost:4100/inbox', item).subscribe());
+                dataItemsPair.forEach(item => this._httpClient.post(`http://localhost:${Constants.port}/${Constants.inboxRest}`, item).subscribe());
             });
     }
 
     public getData(lastId?: string): Observable<any[]> {
-        return this._httpClient.get<any[]>('http://localhost:4100/inbox').pipe(map(items => {
+        return this._httpClient.get<any[]>(`http://localhost:${Constants.port}/${Constants.inboxRest}`).pipe(map(items => {
             if (!lastId)
                 return items;
             const index = items.findIndex(i => i.id === lastId);
@@ -36,7 +39,7 @@ export class MockAndSlowApi {
             return Observable.throw('Не указан Id');
         return interval(1000).pipe(
             first(),
-            switchMap(() => this._httpClient.delete('http://localhost:4100/inbox/' + id).pipe(
+            switchMap(() => this._httpClient.delete(`http://localhost:${Constants.port}/${Constants.inboxRest}` + id).pipe(
                 flatMap(() => of(null))
             ))
         )
