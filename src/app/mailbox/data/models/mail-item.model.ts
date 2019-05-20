@@ -1,4 +1,4 @@
-export interface MailItemModel {
+export interface IMailItemModel {
     id: string;
     title: string;
     message: string;

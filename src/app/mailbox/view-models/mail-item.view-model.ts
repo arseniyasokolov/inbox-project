@@ -1,5 +1,5 @@
 import { Helpers } from 'core-library/core/helpers';
-import { MailItemModel } from '../data/models/mail-item.model';
+import { IMailItemModel } from '../data/models/mail-item.model';
 
 export class MailItemViewModel {
 
@@ -17,7 +17,7 @@ export class MailItemViewModel {
         return this._isDeleting;
     }
     /** Снимок изначальных данных */
-    private _snapshot: MailItemModel;
+    private _snapshot: IMailItemModel;
     private _id: string;
     private _time: string;
     private _isDeleting: boolean;
@@ -25,7 +25,7 @@ export class MailItemViewModel {
     constructor() {
     }
 
-    public fromModel(data: MailItemModel) {
+    public fromModel(data: IMailItemModel) {
         this._snapshot = data;
         this._id = data.id;
         this._time = Helpers.getFormattedDate(data.timestamp);

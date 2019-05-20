@@ -6,7 +6,8 @@ import { TosterTypes } from 'core-library/modals/data/toster/toster-types.enum';
 
 import { MailItemViewModel } from '../../view-models/mail-item.view-model';
 import { MailboxService } from '../../data/services/mailbox.service';
-import { MailItemModel } from '../../data/models/mail-item.model';
+import { IMailItemModel } from '../../data/models/mail-item.model';
+import { UsersService as UserService } from 'src/app/user/data/user.service';
 
 @Component({
   selector: 'mail-list',
@@ -25,12 +26,14 @@ export class MailListComponent implements OnInit {
 
   constructor(
     private _dataService: MailboxService,
+    private _userService: UserService,
     private _tosterService: TosterGlobalService
   ) {
   }
 
   public ngOnInit() {
     this.initialize();
+    this._userService.getUsers().subscribe(users=> console.log(users));
   }
 
   public deleteItem(item: MailItemViewModel) {
@@ -62,7 +65,7 @@ export class MailListComponent implements OnInit {
     });
   }
 
-  private createItems(items: MailItemModel[]): MailItemViewModel[] {
+  private createItems(items: IMailItemModel[]): MailItemViewModel[] {
     return items.map(item => {
       const viewModel = new MailItemViewModel();
       viewModel.fromModel(item);

@@ -1,10 +1,10 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UserComponent } from './components/user/user.component';
-import { UsersService } from './data/users.service';
+import { UserCardComponent } from './components/user-card/user-card.component';
+import { UsersService } from './data/user.service';
 
 @NgModule({
-  declarations: [UserComponent],
+  declarations: [UserCardComponent],
   imports: [
     CommonModule
   ]

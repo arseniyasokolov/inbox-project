@@ -1,22 +1,26 @@
-import { PersonModel, IPersonInitializeData } from 'core-library/core/models/person.model';
+import { PersonModel,  IPersonModel } from 'core-library/core/models/person.model';
 
 export class UserModel extends PersonModel {
 
+    public Email: string;
     public LatestEntryDate: Date;
 
-    constructor(data: IUserInitializeData) {
+    constructor(data: IUserModel) {
         super(data);
     }
 
-    public fromData(data: IUserInitializeData): void {
+    public fromData(data: IUserModel): void {
         super.fromData(data);
-        this.LatestEntryDate = new Date(data.latestEntryDate);
+        this.Email = data.email;
+        if (data.latestEntryDate)
+            this.LatestEntryDate = new Date(data.latestEntryDate);
     }
 
 }
 
-export interface IUserInitializeData extends IPersonInitializeData {
+export interface IUserModel extends IPersonModel {
 
+    email: string;
     latestEntryDate: string;
 
 }

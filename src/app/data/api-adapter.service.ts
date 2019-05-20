@@ -12,25 +12,33 @@ const Constants = {
 @Injectable({
     providedIn: "root"
 })
-/** Имитация API */
-export class MockAndSlowApi {
+/** Адаптер для мокового API.
+ * В качестве мокового API используется json-server: https://www.npmjs.com/package/json-server.
+ * Предоставляет асинхронные обертки над http-запросами, а также имитирует задержки сервера.
+ */
+export class ApiAdapterService {
 
     private _dataCache = new BehaviorSubject<any[]>(null);
 
     constructor(private _httpClient: HttpClient) {
-        this.createPipeWithRandomInterval(this.createDataItemsPair, 7000, 10000)
-            .subscribe((dataItemsPair: any[]) => {
-                dataItemsPair.forEach(item => this._httpClient.post(`http://localhost:${Constants.port}/${Constants.mailsRest}`, item).subscribe());
-            });
+        // this.createPipeWithRandomInterval(this.createDataItemsPair, 7000, 10000)
+        //     .subscribe((dataItemsPair: any[]) => {
+        //         dataItemsPair.forEach(item => this._httpClient.post(`http://localhost:${Constants.port}/${Constants.mailsRest}`, item).subscribe());
+        //     });
     }
 
-    public getItems(service: ApiServices, lastId?: string): Observable<any[]> {
-        return this._httpClient.get<any[]>(`http://localhost:${Constants.port}/${service.toLowerCase()}`).pipe(map(items => {
+
+    public getItems<T extends { id: string | number }>(service: ApiServices, lastId?: string): Observable<T[]> {
+        return this._httpClient.get<T[]>(`http://localhost:${Constants.port}/${service.toLowerCase()}`).pipe(map(items => {
             if (!lastId)
                 return items;
             const index = items.findIndex(i => i.id === lastId);
             return index > -1 ? items.slice(index + 1) : [];
         }));
+    }
+
+    public getById<T>(service: ApiServices, id?: string): Observable<T> {
+        return this._httpClient.get<T>(`http://localhost:${Constants.port}/${service.toLowerCase()}/${id}`);
     }
 
     public deleteDataItem(service: ApiServices, id: string): Observable<void> {
