@@ -6,7 +6,6 @@ import { Helpers } from 'core-library/core/helpers';
 import { Color } from 'core-library/core/models/color.model';
 
 const Constants = {
-    inboxRest: 'inbox',
     port: '4100',
 };
 
@@ -21,12 +20,12 @@ export class MockAndSlowApi {
     constructor(private _httpClient: HttpClient) {
         this.createPipeWithRandomInterval(this.createDataItemsPair, 7000, 10000)
             .subscribe((dataItemsPair: any[]) => {
-                dataItemsPair.forEach(item => this._httpClient.post(`http://localhost:${Constants.port}/${Constants.inboxRest}`, item).subscribe());
+                dataItemsPair.forEach(item => this._httpClient.post(`http://localhost:${Constants.port}/${Constants.mailsRest}`, item).subscribe());
             });
     }
 
-    public getData(lastId?: string): Observable<any[]> {
-        return this._httpClient.get<any[]>(`http://localhost:${Constants.port}/${Constants.inboxRest}`).pipe(map(items => {
+    public getItems(service: ApiServices, lastId?: string): Observable<any[]> {
+        return this._httpClient.get<any[]>(`http://localhost:${Constants.port}/${service.toLowerCase()}`).pipe(map(items => {
             if (!lastId)
                 return items;
             const index = items.findIndex(i => i.id === lastId);
@@ -34,12 +33,12 @@ export class MockAndSlowApi {
         }));
     }
 
-    public deleteDataItem(id: string): Observable<void> {
+    public deleteDataItem(service: ApiServices, id: string): Observable<void> {
         if (!id)
             return Observable.throw('Не указан Id');
         return interval(1000).pipe(
             first(),
-            switchMap(() => this._httpClient.delete(`http://localhost:${Constants.port}/${Constants.inboxRest}/${id}`).pipe(
+            switchMap(() => this._httpClient.delete(`http://localhost:${Constants.port}/${service.toLowerCase()}/${id}`).pipe(
                 flatMap(() => of(null))
             ))
         )
@@ -75,4 +74,9 @@ export class MockAndSlowApi {
         };
     }
 
+}
+
+export enum ApiServices {
+    Mails = 'Mails',
+    Users = 'Users'
 }

@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { ModalsModule } from 'core-library/modals/modals.module';
 import { LoaderModule } from 'core-library/loader/loader.module';
 import { CabinetModule } from './cabinet/cabinet.module';
+import { UserModule } from './user/user.module';
 
 // components
 import { AppComponent } from './app.component';
@@ -17,6 +18,7 @@ const coreModules = [
 
 const appModules = [
   CabinetModule.forRoot(),
+  UserModule.forRoot()
 ]
 
 @NgModule({
