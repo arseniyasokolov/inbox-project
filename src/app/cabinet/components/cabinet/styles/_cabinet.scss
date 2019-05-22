@@ -1,0 +1,29 @@
+.cabinet {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100vh;
+    padding: 2rem;
+    padding-left: 6rem;
+    overflow: hidden;
+
+    &__header {
+        flex-basis: 80px;
+    }
+
+    &__body {
+        flex-grow: 1;
+        overflow: auto;
+    }
+
+    &__mail-list {
+        width: 70%;
+        height: 100%;
+    }
+
+    &__footer {
+        flex-basis: 80px;
+        min-height: 80px;
+    }
+}
