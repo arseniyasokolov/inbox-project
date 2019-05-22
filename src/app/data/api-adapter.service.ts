@@ -6,7 +6,7 @@ import { Helpers } from 'core-library/core/helpers';
 import { Color } from 'core-library/core/models/color.model';
 
 const Constants = {
-    port: '4100',
+    port: '3000',
 };
 
 @Injectable({
@@ -21,10 +21,10 @@ export class ApiAdapterService {
     private _dataCache = new BehaviorSubject<any[]>(null);
 
     constructor(private _httpClient: HttpClient) {
-        // this.createPipeWithRandomInterval(this.createDataItemsPair, 7000, 10000)
-        //     .subscribe((dataItemsPair: any[]) => {
-        //         dataItemsPair.forEach(item => this._httpClient.post(`http://localhost:${Constants.port}/${Constants.mailsRest}`, item).subscribe());
-        //     });
+        this.createPipeWithRandomInterval(this.createDataItemsPair, 7000, 10000)
+            .subscribe((dataItemsPair: any[]) => {
+                dataItemsPair.forEach(item => this._httpClient.post(`http://localhost:${Constants.port}/${ApiServices.Mails}`, item).subscribe());
+            });
     }
 
 
